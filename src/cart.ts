@@ -26,12 +26,14 @@ export function subtotal(cart: Cart): number {
 /**
  * Applies every promo code on the cart and returns the amount due.
  *
- * NOTE: this is the deliberately seeded bug. It folds over `cart.codes`
- * as-is, so a code listed twice is discounted twice. See scripts/repro.ts.
+ * Each distinct code applies at most once, and the total never drops below
+ * zero. See scripts/repro.ts.
  */
 export function applyDiscounts(cart: Cart): number {
-  return cart.codes.reduce((total, code) => {
+  const total = [...new Set(cart.codes)].reduce((running, code) => {
     const amount = DISCOUNTS[code];
-    return amount === undefined ? total : total - amount;
+    return amount === undefined ? running : running - amount;
   }, subtotal(cart));
+
+  return Math.max(0, total);
 }

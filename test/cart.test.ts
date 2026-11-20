@@ -40,3 +40,17 @@ test("stacked codes each apply once", () => {
 test("an unknown code is ignored", () => {
   assert.equal(applyDiscounts({ ...coffee, codes: ["NOT-A-CODE"] }), 1500);
 });
+
+test("a repeated code is applied only once", () => {
+  assert.equal(applyDiscounts({ ...coffee, codes: ["SAVE10", "SAVE10"] }), 500);
+});
+
+test("a discount larger than the subtotal floors the total at zero", () => {
+  const cheap: Cart = {
+    items: [
+      { sku: "MUG", name: "Ceramic mug", priceCents: 500, quantity: 1 },
+    ],
+    codes: ["SAVE10"],
+  };
+  assert.equal(applyDiscounts(cheap), 0);
+});
