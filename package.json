@@ -1,0 +1,20 @@
+{
+  "name": "demo-shop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Disposable demo storefront for the Slack collaborative-agent POC.",
+  "scripts": {
+    "test": "node --import tsx --test test/*.test.ts",
+    "repro": "tsx scripts/repro.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

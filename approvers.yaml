@@ -1,0 +1,14 @@
+# Slack user id -> GitHub login.
+#
+# The bridge resolves an approver's GitHub identity from this file. Replace the
+# placeholders with the three demo people before the recorded run.
+approvers:
+  - slack: U0000000001
+    github: demo-requester
+    role: requester
+  - slack: U0000000002
+    github: demo-approver
+    role: approver
+  - slack: U0000000003
+    github: demo-observer
+    role: observer
