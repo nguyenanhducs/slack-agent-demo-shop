@@ -9,9 +9,6 @@
     "repro": "tsx scripts/repro.ts",
     "typecheck": "tsc --noEmit"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
-  },
   "devDependencies": {
     "@types/node": "^24.0.0",
     "tsx": "^4.19.0",
